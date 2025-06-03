@@ -22,3 +22,4 @@ Este é um exemplo simples de uma aplicação Node.js "Hello World" conteineriza
 * `package.json`: Metadados e scripts da aplicação Node.js.
 * `Dockerfile`: A receita para construir a imagem Docker.
 * `README.md`: Este arquivo, descrevendo o projeto.
+*
