@@ -1,0 +1,31 @@
+
+name: Build and Push Docker Image to Docker Hub
+
+on:
+  push:
+    branches:
+      - master 
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest # O tipo de máquina virtual que o GitHub Actions vai usar
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4 # Clona seu repositório para a VM
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }} # Usa o segredo que você criou
+          password: ${{ secrets.DOCKER_PASSWORD }} # Usa o segredo que você criou
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: . # Onde está seu Dockerfile (pasta atual)
+          file: ./Dockerfile # Caminho para o seu Dockerfile
+          push: true # Faz o push da imagem para o registro
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/meu-app-docker:latest # Ex: seu_usuario_docker/meu-app-docker:latest
+            ${{ secrets.DOCKER_USERNAME }}/meu-app-docker:${{ github.sha }} # Tag com o hash do commit (opcional, para controle de versão)
