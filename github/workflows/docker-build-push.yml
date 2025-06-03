@@ -5,7 +5,7 @@ name: Build and Push Docker Image to Docker Hub
 on:
   push:
     branches:
-      - main # Dispara o workflow sempre que houver um push na branch 'main'
+      - master # Dispara o workflow sempre que houver um push na branch 'main'
 
 jobs:
   build-and-push:
