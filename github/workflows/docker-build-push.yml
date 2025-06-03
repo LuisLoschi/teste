@@ -5,7 +5,7 @@ name: Build and Push Docker Image to Docker Hub
 on:
   push:
     branches:
-      - master # Dispara o workflow sempre que houver um push na branch 'main'
+      - master 
 
 jobs:
   build-and-push:
@@ -28,5 +28,5 @@ jobs:
           file: ./Dockerfile # Caminho para o seu Dockerfile
           push: true # Faz o push da imagem para o registro
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/meu-app-docker:latest # Ex: seu_usuario_docker/meu-app-docker:latest
-            ${{ secrets.DOCKER_USERNAME }}/meu-app-docker:${{ github.sha }} # Tag com o hash do commit (opcional, para controle de versão)
+            ${{ secrets.DOCKER_USERNAME }}/novo-portfolio:latest # Ex: seu_usuario_docker/meu-app-docker:latest
+            ${{ secrets.DOCKER_USERNAME }}/novo-portfolio:${{ github.sha }} # Tag com o hash do commit (opcional, para controle de versão)
